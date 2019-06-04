@@ -1,0 +1,28 @@
+.nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 7%;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+.nav-bar{
+    padding: 0;
+    margin: 1em;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.search{
+    text-align: center;
+    width:16em;
+    height: 2.5em;
+    color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 2.5px;
+}
+.search-bar{
+    margin-left: auto;
+    margin-right: auto;
+}

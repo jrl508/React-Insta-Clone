@@ -7,6 +7,7 @@ function CommentSection(props){
         <div className="comment-section">
             <p> *heart and comment icons*</p>
             {props.post.comments.map(comment => <Comment comment={comment}  key={comment.id}/>)}
+            <div className="timestamp">{props.post.timestamp}</div>
         </div>
     )
 }
