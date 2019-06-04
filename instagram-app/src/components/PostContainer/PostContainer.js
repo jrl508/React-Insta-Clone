@@ -10,9 +10,8 @@ function PostContainer(props){
                     <img src={post.imageUrl} alt="post-img" className="post-img"></img>
                 
                     <CommentSection post={post}/>
-            <input type="text" className="comment-box"/>
-
                 </div>
+
             ))}
         </div>
     )

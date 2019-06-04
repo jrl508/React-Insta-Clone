@@ -1,12 +1,24 @@
 .comment-section{
     box-sizing: border-box;
-    text-align: left;
-    padding-left: 1em;
-    line-height: 1.6;
+    display: flex;
+    flex-flow: column nowrap;
     font-size: 0.9em;
-    height: 30%;
+    height: 31%;
+    justify-content: space-between;
 }
 
+.comment-dash{
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 1em;
+    padding-bottom: 2em;
+    line-height: 1.6;
+    border-bottom: 1px solid lightgrey;
+}
+
+.add-comment, .comment-box, .comment-btn{
+    font-size: 1.1em;
+}
 .comment-text{
     margin-left: 0.5em;
 }
@@ -18,11 +30,23 @@
 }
 
 .comment-box{
-    padding: 0;
+    box-sizing: border-box;
+    padding: 1em;
     margin: 0;
+    color: lightgray;
     position: relative;
     width: 89%;
-    height: 10%;
+    height: 18%;
     border:none;
-    border-top: 1px solid lightgrey;
+}
+
+.comment-btn{
+    text-align: center;
+    box-sizing: border-box;
+    padding: .25em;
+    width: 11%;
+    background-color: white;
+    border: none;
+    color: lightblue;
+    font-weight: 600;
 }
