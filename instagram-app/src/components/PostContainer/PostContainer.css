@@ -1,0 +1,12 @@
+.post{
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: left;
+    border: 1px solid lightgray;
+    margin: 1em;
+    border-radius: 3px;
+}
+
+.post .thumbnail{
+    border-radius: 100%;
+}
