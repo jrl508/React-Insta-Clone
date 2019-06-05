@@ -1,0 +1,40 @@
+.nav{
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 2;
+    top: 0;
+    padding: 1em;
+    width: 100%;
+    height: 7%;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+.nav-bar{
+    box-sizing: border-box;
+    margin:0 5em 0em 5em;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.search{
+    text-align: center;
+    width:16em;
+    height: 2.2em;
+    color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 2.5px;
+}
+.search-bar{
+    margin-left: auto;
+    margin-right: auto;
+}
+.icon{
+    font-size: 1.6rem;
+    margin: 0 0.25em;
+}
+ .nav-bar li a{
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: black;
+ }
