@@ -7,17 +7,23 @@ import SearchBar from './components/SearchBar/SearchBar';
 class App extends Component {
   constructor(){
     super();
+    this.state = {
+      posts:[]
+    };
+  }
 
-    this.state ={
-     posts: dummyData
-   }
+  componentDidMount(){
+    console.log('CDM invoked!');
+    this.setState({
+      posts: dummyData
+    });
   }
 
   render(){
   return (
     <div className="App">
     <SearchBar/>
-    <PostContainer posts={this.state.posts}/>
+    <PostContainer posts={this.state.posts} changeHandler={this.changeHandler}/>
     </div>
   );
   }

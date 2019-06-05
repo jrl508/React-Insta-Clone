@@ -38,3 +38,11 @@
     font-size: 1.6rem;
     color: black;
  }
+
+ .logo{
+    font-family: 'Cookie', cursive;
+ }
+
+ .logo a{
+     font-size: 1.8em;
+ }
