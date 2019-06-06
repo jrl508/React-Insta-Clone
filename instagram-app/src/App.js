@@ -1,64 +1,52 @@
 import React, {Component} from 'react';
 import './App.css';
-import dummyData from './dummy-data';
-import PostContainer from './components/PostContainer/PostContainer';
-import SearchBar from './components/SearchBar/SearchBar';
+import withAuthenticate from './authentication/withAuthenticate'
+import PostsPage from './components/PostContainer/PostsPage';
+import Login from './components/Login/Login';
+
+
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(Login)
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       posts:[],
-      filteredPosts:[]
+      filteredPosts:[],
+      isLoggedIn:false
     };
+    
   }
-
+  
+  
   changeHandler = e =>{
-    console.log(e.target.value)
-    e.preventDefault();
-    this.setState(
-        {
-            [e.target.name]: e.target.value
-        }
-    )
-  }
-
-  componentDidMount(){
-    console.log('CDM invoked!');
-    this.setState({
-      posts: dummyData
-    });
-  }
-
-  searchFilter=e=>{
-    const filtered = this.state.posts.filter(post => 
-      post.username.toLowerCase().includes(e.target.value.toLowerCase())
+      console.log(e.target.value)
+      e.preventDefault();
+      this.setState(
+          {
+              [e.target.name]: e.target.value
+          }
       )
-      this.setState({filteredPosts: filtered})
+    }
+    
+  
+  componentDidMount(){
+    if (localStorage.getItem('isLoggedIn')){
+
+      this.setState({
+        isLoggedIn:true
+      })
+    } else{
+      this.setState({
+        isLoggedIn:false
+      })
+    }
   }
+  
 
   render(){
   return (
-    <div className="App">
-        <div className="nav">
-        <ul className="nav-bar">
-          <li> <a href='#' className="logo"><i className="fab fa-instagram icon"></i> | Instagram </a></li>
-          <SearchBar 
-          changeHandler={this.changeHandler} 
-          searchFilter={this.searchFilter}
-          />
-          <li><a href="#"><i className="far fa-compass icon"></i></a></li>
-          <li><a href="#"><i className="far fa-heart icon"></i></a></li>
-          <li><a href="#"><i className="far fa-user icon"></i></a></li>
-        </ul>
-    </div>
-
-    <PostContainer
-      filteredPosts={this.state.filteredPosts} 
-      posts={this.state.posts} 
-      changeHandler={this.changeHandler}
-    />
-    </div>
+    <ComponentFromWithAuthenticate/>
   );
   }
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import './CommentSection.css'
 import Comment from './Comment'
+import moment from 'moment'
+import { stringify } from 'postcss';
 
 class CommentSection extends Component{
 
@@ -18,24 +20,26 @@ class CommentSection extends Component{
             }
         )
     }
-
     addComment = e =>{
         e.preventDefault();
         const newComment={
-            username: "that_guy_ricky",
+            username: localStorage.getItem('username'),
             text: this.state.newComment
         }
+        localStorage.setItem('comments',JSON.stringify(newComment))
+
         this.setState({
-            comments:[...this.state.comments, newComment], newComment:''
+            comments:[...this.state.comments, JSON.parse(localStorage.getItem('comments'))], newComment:''
         })
+
     }
     render(){
 
         return(
             <div className="comment-section">
                 <div className="comment-dash">
-                    {this.props.likes}
-                    <p> <i className="far fa-heart icon"></i> <i className="far fa-comment icon"></i></p>
+                    <p className="likes">{this.props.likes} Likes</p>
+                    <p className="com-dash-icons"> <i className="far fa-heart icon"></i> <i className="far fa-comment icon"></i></p>
                     {this.state.comments.map(comment => <Comment comment={comment}  key={comment.id}/>)}
                     <div className="timestamp">{this.props.timestamp}</div>
                 </div>
