@@ -1,24 +1,52 @@
 import React, {Component} from 'react';
 import './App.css';
-import dummyData from './dummy-data';
-import PostContainer from './components/PostContainer/PostContainer';
-import SearchBar from './components/SearchBar/SearchBar';
+import withAuthenticate from './authentication/withAuthenticate'
+import PostsPage from './components/PostContainer/PostsPage';
+import Login from './components/Login/Login';
+
+
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(Login)
 
 class App extends Component {
   constructor(){
     super();
-
-    this.state ={
-     posts: dummyData
-   }
+    this.state = {
+      posts:[],
+      filteredPosts:[],
+      isLoggedIn:false
+    };
+    
   }
+  
+  
+  changeHandler = e =>{
+      console.log(e.target.value)
+      e.preventDefault();
+      this.setState(
+          {
+              [e.target.name]: e.target.value
+          }
+      )
+    }
+    
+  
+  componentDidMount(){
+    if (localStorage.getItem('isLoggedIn')){
+
+      this.setState({
+        isLoggedIn:true
+      })
+    } else{
+      this.setState({
+        isLoggedIn:false
+      })
+    }
+  }
+  
 
   render(){
   return (
-    <div className="App">
-    <SearchBar/>
-    <PostContainer posts={this.state.posts}/>
-    </div>
+    <ComponentFromWithAuthenticate/>
   );
   }
 }
